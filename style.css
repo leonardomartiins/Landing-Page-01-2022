@@ -168,7 +168,7 @@ body {
 }
 
 .conteudo-terciario-paragrafo{
-
+    padding: auto;
 }
 
 .conteudo-quaternario{
@@ -210,4 +210,13 @@ body {
 .rodape-imagem{
     height: 48px;
     margin-right: 8px;
+}
+
+.div.panel{
+    background-color: gray;
+    width: 75%;
+    min-width: 250px;
+    padding: 15px 15px;
+    box-shadow: 1px 1px black;
+
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="description" content="Cadastre-se nesse universo!!!">
+    <title>Cadastro - Start Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<script>
+			function salvar(){			
+				var json = {};
+				
+				json.id    = document.querySelector("#id").value;
+				json.email = document.querySelector("#email").value;
+				json.nome  = document.querySelector("#nome").value;
+				json.senha = document.querySelector("#senha").value;
+				json.acao  = json.id==""?"insert":"update";
+
+				$.ajax({
+					url: "db.php",
+					data: json,
+					type: "GET",
+					success: function(resp){
+						alert(resp);
+						limpar_campos();
+					}
+				});
+			}
+            function limpar_campos(){
+				document.querySelector("#id").value="";
+				document.querySelector("#email").value="";
+				document.querySelector("#nome").value="";
+				document.querySelector("#senha").value="";
+			}
+            </script>
+</head>
+<body>
+    <header class="cabecalho">
+        <img class="cabecalho-imagem" src="imagens/circleStart.png" alt="Logo da Start Game">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item">Start Up - Sobre nós</a>
+        </nav>
+    </header>
+    <main class="conteudo">
+        <h1>Cadastro de Usuários</h1>
+
+        ID: 	<input type="text" id="id"/><br>
+        EMAIL: 	<input type="text" id="email"/><br>
+        NOME:   <input type="text" id="nome"/><br>
+        SENHA: 	<input type="text" id="senha"/><br><br>
+
+        <input type="button" value="Salvar" onClick="salvar()"/>
+        <input type="button" value="Limpar" onClick="limpar_campos()"/>
+
+        <br>
+        <br>
+    </main>
+    
+</body>
+</html>
